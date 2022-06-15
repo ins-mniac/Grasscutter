@@ -35,6 +35,7 @@ import emu.grasscutter.game.props.FightProperty;
 public class AbilityManager {
 	private Player player;
     HealAbilityManager healAbilityManager;
+	SelfDamageAbilityManager selfDamageAbilityManager;
 	
 	public AbilityManager(Player player) {
 		this.player = player;
@@ -47,6 +48,7 @@ public class AbilityManager {
 
 	public void onAbilityInvoke(AbilityInvokeEntry invoke) throws Exception {
         healAbilityManager.healHandler(invoke);
+		selfDamageAbilityManager.damageHandler(invoke);
 
 		 //Grasscutter.getLogger().info(invoke.getArgumentType() + " (" + invoke.getArgumentTypeValue() + "): " + Utils.bytesToHex(invoke.toByteArray()));
 		switch (invoke.getArgumentType()) {
