@@ -49,10 +49,8 @@ public class SelfDamageAbilityManager {
 
         String modifierString = data.getParentAbilityName().getStr();
 
-        if (modifierString.isBlank()) {
-            System.out.println(data);
-            return;
-        }
+        if (modifierString.isBlank()) return;
+
 
 
 //        System.out.println(modifierString);

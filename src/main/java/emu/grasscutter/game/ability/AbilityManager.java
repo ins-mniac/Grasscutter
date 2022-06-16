@@ -84,11 +84,12 @@ public class AbilityManager {
 
         AbilityMetaReInitOverrideMap map = AbilityMetaReInitOverrideMap.parseFrom(invoke.getAbilityData());
 
-        System.out.println();
-        System.out.println(entity.getMetaOverrideMap().toString());
+
 
         for (AbilityScalarValueEntry entry : map.getOverrideMapList()) {
             entity.getMetaOverrideMap().put(entry.getKey().getStr(), entry.getFloatValue());
+            System.out.println();
+            System.out.println(entity.getMetaOverrideMap().toString());
         }
     }
 
