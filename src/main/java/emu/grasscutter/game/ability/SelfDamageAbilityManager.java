@@ -18,9 +18,9 @@ public class SelfDamageAbilityManager {
 
     @Data
     private class avatar {
-        String name;
-        float damagePercent;
-        int id;
+        private String name;
+        private float damagePercent;
+        private int id;
 
         public avatar(String name, float damagePercent, int id) {
             this.name = name;
@@ -36,21 +36,25 @@ public class SelfDamageAbilityManager {
 
         avatars.add(new avatar("Hutao", .30f, 9));
         avatars.add(new avatar("Shinobu", .30f, 5));
-        //To add: Xiao?
+        //TODO: add Xiao?
 
     }
 
 
     public void damageHandler(AbilityInvokeEntry invoke) throws Exception {
+
         AbilityMetaModifierChange data = AbilityMetaModifierChange.parseFrom(invoke.getAbilityData());
 
         if (data == null) return;
-        if (data.getParentAbilityName().getStr().isBlank()) {
+
+        String modifierString = data.getParentAbilityName().getStr();
+
+        if (modifierString.isBlank()) {
             System.out.println(data);
             return;
         }
 
-        String modifierString = data.getParentAbilityName().getStr();
+
 //        System.out.println(modifierString);
 
         for (avatar avatar : avatars) {
@@ -67,12 +71,8 @@ public class SelfDamageAbilityManager {
                     //reduce health
                     currentAvatar.damage(damageAmount);
                     System.out.printf("damaging %s%n", avatar.getName());
-                } else {
-                    //set health to 1
-                    currentAvatar.damage(currentHealth - (currentHealth - 1));
                 }
             }
         }
-
     }
 }
