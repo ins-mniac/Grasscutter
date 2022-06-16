@@ -45,9 +45,11 @@ public class SelfDamageAbilityManager {
         AbilityMetaModifierChange data = AbilityMetaModifierChange.parseFrom(invoke.getAbilityData());
 
         if (data == null) return;
-        if (data.getParentAbilityName().getStr().isBlank()) return;
+        if (data.getParentAbilityName().getStr().isBlank()) {
+            System.out.println(data);
+            return;
+        }
 
-        System.out.println(data);
         String modifierString = data.getParentAbilityName().getStr();
 //        System.out.println(modifierString);
 
@@ -64,7 +66,7 @@ public class SelfDamageAbilityManager {
                 if (!(currentHealth - damageAmount <= 1)) {
                     //reduce health
                     currentAvatar.damage(damageAmount);
-                    System.out.printf("damaging %s%n",avatar.getName());
+                    System.out.printf("damaging %s%n", avatar.getName());
                 } else {
                     //set health to 1
                     currentAvatar.damage(currentHealth - (currentHealth - 1));
