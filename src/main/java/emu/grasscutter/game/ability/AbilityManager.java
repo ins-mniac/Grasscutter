@@ -69,10 +69,10 @@ public class AbilityManager {
 
 
         entity.getMetaOverrideMap().put(entry.getKey().getStr(), entry.getFloatValue());
-
         System.out.println();
-        System.out.println(entity + "\n" + entity.getMetaOverrideMap().toString());
-        
+        System.out.println(entity.getMetaOverrideMap().toString());
+
+
     }
 
     private void handleReinitOverrideMap(AbilityInvokeEntry invoke) throws Exception {
@@ -83,6 +83,9 @@ public class AbilityManager {
         }
 
         AbilityMetaReInitOverrideMap map = AbilityMetaReInitOverrideMap.parseFrom(invoke.getAbilityData());
+
+        System.out.println();
+        System.out.println(entity.getMetaOverrideMap().toString());
 
         for (AbilityScalarValueEntry entry : map.getOverrideMapList()) {
             entity.getMetaOverrideMap().put(entry.getKey().getStr(), entry.getFloatValue());
