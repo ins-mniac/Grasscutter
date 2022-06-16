@@ -20,14 +20,15 @@ public class SelfDamageAbilityManager {
         this.player = player;
         damageAvatarList = new HashMap<>();
         //Avatar name, damage amount
-        damageAvatarList.put("Hu Tao", .30f /* 30% of Hu Tao's health */);
+        damageAvatarList.put("Hutao", .30f /* 30% of Hu Tao's health */);
     }
 
     public void damageHandler(AbilityInvokeEntry invoke) throws Exception {
         AbilityMetaModifierChange data = AbilityMetaModifierChange.parseFrom(invoke.getAbilityData());
 
         if (data == null) return;
-        if (data.getParentAbilityName() == null) return;
+        if (data.getParentAbilityName().getStr().isBlank())
+            return; // Also functions as an == null check, though getParentAbilityName is NotNull? /shrug
 
         String modifierString = data.getParentAbilityName().getStr();
         System.out.println(modifierString);
