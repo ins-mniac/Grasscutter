@@ -101,7 +101,10 @@ public class HealAbilityManager {
         healDataAvatarList.add(new HealDataAvatar(10000014, "Barbara", 0).addHealData("E", "HealHPOnAdded", "HealHPOnAdded_Const", true).addHealData("E", "HealHP_OnHittingOthers", "HealHP_Const_OnHittingOthers", true));
         healDataAvatarList.add(new HealDataAvatar(10000065, "Shinobu", 0).addHealData("E", "ElementalArt_Heal_MaxHP_Percentage", 0.064f, 795f, false));
         healDataAvatarList.add(new HealDataAvatar(10000035, "Qiqi", 1).addHealData("E", "HealHP_OnHittingOthers", "HealHP_Const_OnHittingOthers", true).addHealData("E", "ElementalArt_HealHp_Ratio", "ElementalArt_HealHp_Const", true));
+//        healDataAvatarList.add(new HealDataAvatar(10000046, "Hutao", 0).addHealData("Q", )
+//        _ABILITY_Hutao_VermilionBite_IsLowHP
     }
+
 
     public Player getPlayer() {
         return this.player;
