@@ -14,14 +14,23 @@ public class SelfDamageAbilityManager {
 
     private final Player player;
     private final HashMap<String, Float> damageAvatarList;
+//    private final ArrayList<String> cooldownList;
 
+//    private class avatar{
+//        String name;
+//        float damagePercent;
+//
+//    }
 
     public SelfDamageAbilityManager(Player player) {
         this.player = player;
+//        cooldownList = new ArrayList<>();
         damageAvatarList = new HashMap<>();
         //Avatar name, damage amount
         damageAvatarList.put("Hutao", .30f /* 30% of Hu Tao's health */);
+
     }
+
 
     public void damageHandler(AbilityInvokeEntry invoke) throws Exception {
         AbilityMetaModifierChange data = AbilityMetaModifierChange.parseFrom(invoke.getAbilityData());
@@ -30,10 +39,12 @@ public class SelfDamageAbilityManager {
         if (data.getParentAbilityName().getStr().isBlank())
             return; // Also functions as an == null check, though getParentAbilityName is NotNull? /shrug
 
+        System.out.println(data);
         String modifierString = data.getParentAbilityName().getStr();
         System.out.println(modifierString);
         for (String avatarName : damageAvatarList.keySet()) {
             if (modifierString.contains(avatarName)) {
+
                 List<EntityAvatar> activeTeam = player.getTeamManager().getActiveTeam();
                 int currentIndex = player.getTeamManager().getCurrentCharacterIndex();
                 EntityAvatar currentAvatar = activeTeam.get(currentIndex);
@@ -43,6 +54,7 @@ public class SelfDamageAbilityManager {
 
                 if (!(currentHealth - damageAmount <= 1)) {
                     currentAvatar.damage(damageAvatarList.get(avatarName) * currentHealth);
+//                    cooldownList.add(modifierString);
                 }
             }
         }
