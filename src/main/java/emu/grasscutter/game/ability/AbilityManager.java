@@ -40,6 +40,7 @@ public class AbilityManager {
 	public AbilityManager(Player player) {
 		this.player = player;
         this.healAbilityManager = new HealAbilityManager(player);
+		this.selfDamageAbilityManager = new SelfDamageAbilityManager(player);
 	}
 	
 	public Player getPlayer() {
