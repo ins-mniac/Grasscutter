@@ -52,9 +52,11 @@ public class SelfDamageAbilityManager {
 
 //        System.out.println(modifierString);
 
+        EntityAvatar currentAvatar = (EntityAvatar) player.getScene().getEntityById(data.getApplyEntityId());
+        System.out.println(currentAvatar.getMetaOverrideMap().toString());
+
         for (avatar avatar : avatars) {
-            EntityAvatar currentAvatar = (EntityAvatar) player.getScene().getEntityById(data.getApplyEntityId());
-            System.out.println(currentAvatar.getMetaOverrideMap().toString());
+
             if ((modifierString.contains(avatar.getName())) && (data.getModifierLocalId() == avatar.getId())) {
 
 
