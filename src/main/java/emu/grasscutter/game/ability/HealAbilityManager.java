@@ -134,6 +134,8 @@ public class HealAbilityManager {
         float maxHP, curAttack, curDefense;
         Map<String, Float> map = sourceEntity.getMetaOverrideMap();
 
+        System.out.println(map);
+
         for(int i = 0 ; i < healDataAvatarList.size() ; i ++) {
             HealDataAvatar healDataAvatar = healDataAvatarList.get(i);
             if(modifierString.contains(healDataAvatar.avatarName)) {

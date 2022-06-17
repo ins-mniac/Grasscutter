@@ -52,13 +52,13 @@ public class SelfDamageAbilityManager {
 
 //        System.out.println(modifierString);
 
-        EntityAvatar currentAvatar = (EntityAvatar) player.getScene().getEntityById(data.getApplyEntityId());
-        System.out.println(currentAvatar.getMetaOverrideMap().toString());
+//        System.out.println(currentAvatar.getMetaOverrideMap().toString());
 
         for (avatar avatar : avatars) {
 
             if ((modifierString.contains(avatar.getName())) && (data.getModifierLocalId() == avatar.getId())) {
 
+                EntityAvatar currentAvatar = (EntityAvatar) player.getScene().getEntityById(data.getApplyEntityId());
 
                 float currentHealth = currentAvatar.getFightProperty(FightProperty.FIGHT_PROP_CUR_HP);
                 float damageAmount = avatar.getDamagePercent() * currentHealth;
