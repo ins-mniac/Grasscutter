@@ -65,12 +65,9 @@ public class AbilityManager {
 
         AbilityScalarValueEntry entry = AbilityScalarValueEntry.parseFrom(invoke.getAbilityData());
 
-//        System.out.println(entry.getKey().getStr());
 
 
         entity.getMetaOverrideMap().put(entry.getKey().getStr(), entry.getFloatValue());
-        System.out.println();
-        System.out.println(entity.getMetaOverrideMap().toString());
 
 
     }
@@ -88,8 +85,7 @@ public class AbilityManager {
 
         for (AbilityScalarValueEntry entry : map.getOverrideMapList()) {
             entity.getMetaOverrideMap().put(entry.getKey().getStr(), entry.getFloatValue());
-            System.out.println();
-            System.out.println(entity.getMetaOverrideMap().toString());
+
         }
     }
 

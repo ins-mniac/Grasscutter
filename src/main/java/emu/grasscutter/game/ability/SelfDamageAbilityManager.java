@@ -8,7 +8,6 @@ import emu.grasscutter.net.proto.AbilityMetaModifierChangeOuterClass.AbilityMeta
 import lombok.Data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class SelfDamageAbilityManager {
@@ -51,16 +50,13 @@ public class SelfDamageAbilityManager {
 
         if (modifierString.isBlank()) return;
 
-
-
 //        System.out.println(modifierString);
 
         for (avatar avatar : avatars) {
             if ((modifierString.contains(avatar.getName())) && (data.getModifierLocalId() == avatar.getId())) {
 
-                List<EntityAvatar> activeTeam = player.getTeamManager().getActiveTeam();
-                int currentIndex = player.getTeamManager().getCurrentCharacterIndex();
-                EntityAvatar currentAvatar = activeTeam.get(currentIndex);
+                EntityAvatar currentAvatar = (EntityAvatar) player.getScene().getEntityById(data.getApplyEntityId());
+                System.out.println(currentAvatar.getMetaOverrideMap().toString());
 
                 float currentHealth = currentAvatar.getFightProperty(FightProperty.FIGHT_PROP_CUR_HP);
                 float damageAmount = avatar.getDamagePercent() * currentHealth;
