@@ -118,6 +118,7 @@ public class HealAbilityManager {
         }
 
         GameEntity sourceEntity = player.getScene().getEntityById(data.getApplyEntityId());
+        System.out.println(sourceEntity.getMetaOverrideMap().toString());
 
         String modifierString = "";
         if(data.getParentAbilityName() != null)
@@ -134,7 +135,7 @@ public class HealAbilityManager {
         float maxHP, curAttack, curDefense;
         Map<String, Float> map = sourceEntity.getMetaOverrideMap();
 
-        System.out.println(map);
+
 
         for(int i = 0 ; i < healDataAvatarList.size() ; i ++) {
             HealDataAvatar healDataAvatar = healDataAvatarList.get(i);
